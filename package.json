@@ -1,0 +1,50 @@
+{
+  "name": "gsb_calendar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gsb_calendarEh.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack -d",
+    "webpack:watch": "webpack -d --watch",
+    "build": "NODE_ENV=production webpack --progress -p --colors --config webpack.prod.config.js",
+    "jas": "jasmine init"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.3",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-babel": "^7.0.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "jasmine": "^3.1.0",
+    "jasmine-core": "^3.1.0",
+    "jquery": "^1.11.0",
+    "karma": "^2.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.1",
+    "karma-webpack": "^2.0.13",
+    "requirejs": "^2.3.5",
+    "webpack": "^3.11.0",
+    "webpack-stream": "^4.0.2"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env"
+      ],
+      [
+        "react"
+      ]
+    ]
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
+}
