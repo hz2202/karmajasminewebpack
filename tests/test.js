@@ -1,9 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import ReactTestUtils from 'react-dom/test-utils'; // ES6
 import { calendarapp, EventTime } from "../src/gsb_calendarEh.js"; 
 import * as cal from "../src/gsb_calendarEh.js"; 
-import renderer from 'react-test-renderer';
+import ShallowRenderer from 'react-test-renderer/shallow';
 //ReactDOM.render(<CalendarApp />,  document.getElementById("gsb_rcalendar"));
 
 describe("React calendar", function() {
@@ -14,25 +13,16 @@ describe("React calendar", function() {
   });
   
   it('can render without error', function() {
-    //let TestUtils = React.addons;
+    const renderer = new ShallowRenderer();
+    renderer.render(<EventTime time = "test"/>);
+    const result = renderer.getRenderOutput();
  
-    // let renderer = TestUtils.createRenderer();
-    //renderer.render(<EventTime time = "time" />); 
-    const div = document.createElement('div');
-     ReactDOM.render(<EventTime />, div);
-    let component = ReactTestUtils.renderIntoDocument(
-        React.createElement(EventTime, {time: "tesdt"})
-    );
-    var childComponents = ReactTestUtils.scryRenderedComponentsWithType(component, 'time');
-     //                   let component = renderer.getRenderOutput();
-    //let component = ReactTestUtils.renderIntoDocument(
-    //    <EventTime time = "time" />
-    //);
-    //let shallow = ReactTestUtils.createRenderer();
-    //let shallow = new ShallowRenderer();
-   // shallow.render(React.createElement(EventTime, {time: "tesdt"}));
-    //let component = shallow.getRenderOutput();
-    console.log(childComponents);
+    expect(result.type).toBe('time');
+    //expect(result.props.children).toEqual([
+    //  <span className="heading">Title</span>,
+    //  <Subcomponent foo="bar" />
+    //]);
+    //console.log(childComponents);
     //let h1 = ReactTestUtils.findRenderedDOMComponentWithTag(
     //   component, 'time'
     //);
