@@ -27,6 +27,7 @@ gulp.task('sass', function () {
 gulp.task("test", function () {
   return gulp.src("./tests/test.js")
     .pipe(webpackStream(webpackConfigTest), webpack)
+    .on('error', function(e) {console.log(e.toString()); this.emit('end');})
     .pipe(gulp.dest('./tests/__test__'));
 
 });
@@ -36,6 +37,7 @@ gulp.task("test", function () {
 gulp.task("webpack", function () {
   return gulp.src("./src/prod.js")
     .pipe(webpackStream(webpackConfig), webpack)
+    .on('error', function(e) {console.log(e.toString()); this.emit('end');})
     .pipe(gulp.dest('./dist/js'));
 });
 
@@ -44,6 +46,7 @@ gulp.task("webpack", function () {
 gulp.task('watch', function() {
     gulp.watch('./src/gsb_calendarEh.js', ['test', 'webpack']);
     gulp.watch('./tests/test.js', ['test']);
+    gulp.watch('./src/prod.js', ['webpack']);
 });
 
 // Default task
